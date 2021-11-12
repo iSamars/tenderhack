@@ -17,5 +17,10 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=tenderhack
       - POSTGRES_DB=tenderhack_dev
+  bot:
+    build: ./
+    command: python run_bot.py
+    env_file:
+      - ./.env.dev
 volumes:
   postgres_data:

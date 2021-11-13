@@ -1,2 +1,2 @@
-web: python manage.py migrate && python manage.py runserver 0.0.0.0:8000
-bot: python run_bot.py
+web: python manage.py runserver 0.0.0.0:8000
+parser: python parse_stu.py

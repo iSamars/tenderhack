@@ -35,7 +35,7 @@ class STU(models.Model):
     # Fields
     name = models.TextField(max_length=255, null=True, blank=False)
     category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.CASCADE)
-    code = models.CharField(max_length=20, null=False, blank=False)
+    code = models.CharField(max_length=25, null=False, blank=False)
     specifications = models.JSONField(null=False, blank=False)
 
     # Methods

@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install psycopg2 dependencies
 RUN apt-get update \
-    && apt-get install -y postgresql postgresql-contrib gcc python3-dev musl-dev
+    && apt-get install -y postgresql postgresql-contrib gcc python3-dev musl-dev redis-server
 
 # install dependencies
 RUN pip install --upgrade pip

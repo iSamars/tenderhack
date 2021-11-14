@@ -1,4 +1,5 @@
 import csv
+import django
 
 from tenderhack.wsgi import *
 from .models import Contract, Category, STU
@@ -29,6 +30,17 @@ def parse_stu(file):
     
     print("Completed STU parsing")
 
-def test():
-    a = STU.objects.all()
-    print(a[0].name)
+def parse_contracts(file):
+    Contract.objects.all().delete()
+    print("Cleared Contracts")
+    reader = csv.DictReader(file, delimiter=';')
+
+    for row in reader:
+        if row["КПП поставщика"] == '':
+            row["КПП поставщика"] = None
+        try:
+            Contract.objects.update_or_create(number = row["\ufeffНомер контракта"], publication_date = row["Дата публикации КС на ПП"], conclusion_date = row["Дата заключения контракта"], cost = row["Цена контракта"], customer_inn = row["ИНН заказчика"], customer_kpp = row["КПП заказчика"], customer_name = row["Наименование заказчика"], provider_inn = row["ИНН поставщика"], provider_kpp = row["КПП поставщика"], provider_name = row["Наименование поставщика"], stu = row["СТЕ"])
+        except django.db.utils.IntegrityError:
+            print("Exists!")
+    
+    print("Completed contructs parsing")

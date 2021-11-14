@@ -9,7 +9,7 @@ import os
 import redis
 conn = redis.Redis(host="localhost", decode_responses=True)
 
-bot = Bot(token = os.environ.get("TELEGRAM_KEY"))
+bot = Bot(token = "2133279431:AAHfRZEt2PDhBsFQ-63n82l93AUuDTW0Rwo")
 
 dp = Dispatcher(bot)
 KeyBoard = ReplyKeyboardMarkup()
